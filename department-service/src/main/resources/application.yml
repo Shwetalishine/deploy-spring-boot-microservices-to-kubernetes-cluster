@@ -1,0 +1,80 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: DEPARTMENT-SERVICE
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka-0
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+
+
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      departmentService:
+#        registerHealthIndicator: true
+#        eventConsumerBufferSize: 10
+#        automaticTransitionFromOpenToHalfOpenEnabled: true
+#        failureRateThreshold: 50
+#        minimumNumberOfCalls: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        slidingWindowSize: 10
+#        waitDurationInOpenState: 5s
+#        slidingWindowType: COUNT_BASED
+#
+#management:
+#  health:
+#    circuitbreakers:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health
+#  endpoint:
+#    health:
+#      show-details: always
+#
+#  application:
+#    name: department-service-app
+#    data:
+#      mongodb:
+#        host: '${MONGO_HOST}'
+#        database: '${MONGO_DB}'
+#        port: 27017
+#        username: '${MONGO_USERNAME}'
+#        password: '${MONGO_PASSWORD}'
+#    cloud:
+#      kubernetes:
+#        discovery:
+#          register: true
+#        secrets:
+#          name: mongo-secret
+#
+#        config:
+#          enabled: true
+#          sources:
+#            - namespace: default
+#              name: mongo-conf
+#        reload:
+#          enabled: true
+#          mode: polling
+#          period: 1000
+#management:
+#  endpoint:
+#    restart:
+#      enabled: true
+#    health:
+#      enabled: true
+#    info:
+#      enabled: true
+

@@ -1,0 +1,5 @@
+com\app\department\DepartmentServiceApplication.class
+com\app\department\service\DepartmentService.class
+com\app\department\controller\DepartmentController.class
+com\app\department\entity\Department.class
+com\app\department\repository\DepartmentRepository.class
